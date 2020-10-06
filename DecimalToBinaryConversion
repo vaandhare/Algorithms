@@ -1,7 +1,7 @@
 import java.util.Scanner; 
 import java.io.*;
 
-public class Main {
+public class DecimalToBinaryConversion {
 	public static void main(String[] args) {
 	    Scanner sc = new Scanner(System.in);
 	    int decimal = sc.nextInt();
