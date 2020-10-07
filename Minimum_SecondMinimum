@@ -1,0 +1,31 @@
+import java.util.Scanner; 
+import java.io.*;
+
+public class Main {
+	public static void main(String[] args) {
+	   Scanner sc = new Scanner(System.in);
+	   int arrLength = sc.nextInt();
+	   int arr[] = new int[arrLength];
+	   for(int i=0; i<arrLength; i++)
+	        arr[i] = sc.nextInt();
+	   
+	   checkSmallest(arr, arrLength);
+	       
+	}
+	
+    static void checkSmallest(int[] arr, int arrLength) {
+    	int smallest, second;
+    	smallest = second = Integer.MAX_VALUE;
+    	
+    	for(int i=0; i<arrLength; i++){
+    	    if(arr[i] < smallest){
+    	        second = smallest;
+    	        smallest = arr[i];
+    	    }
+    	    else if (arr[i] < second && arr[i] != smallest)
+    	        second = arr[i];
+    	}
+    	
+    	System.out.println("Smallest : " + smallest + "\nSecond smallest : " + second);
+    }
+}
