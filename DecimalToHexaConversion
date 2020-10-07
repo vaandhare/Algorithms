@@ -23,3 +23,17 @@ public class DecimalToHexaConversion {
 static void convertHexa(int decimal) {
   System.out.println(Integer.toHexString(decimal));
 }
+
+//Alternative
+static void convertHexa(int decimal) {
+	char hexa[] = new char[32];
+	int i = 0;
+	while(decimal > 0){
+		int hex = decimal % 16;
+	    hexa[i] = (hex >= 9) ? (char) (55+hex) : (char) (48+hex);
+	    decimal /= 16;
+	    i++;    
+	}
+	for(int j=i-1; j>=0; j--)
+		System.out.print(hexa[j]);
+}
