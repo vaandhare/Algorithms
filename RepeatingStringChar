@@ -1,0 +1,46 @@
+import java.util.Scanner; 
+import java.io.*;
+
+public class Main {
+    
+    static final int NO_OF_CHARS = 256;
+    static char count[] = new char[NO_OF_CHARS];
+    
+	public static void main(String[] args) {
+	   Scanner sc = new Scanner(System.in);
+	   String str = sc.next();
+	   if(repeating(str))
+	        checkRepeating(str);
+	    else
+	    System.out.println("Invalid String");
+    	   
+	}
+	
+	static boolean repeating(String str){
+	    
+	    boolean temp = false;
+	    
+	    for(int i=0; i<str.length(); i++)
+    	    count[str.charAt(i)]++;
+    	
+    	for(int i=0; i<str.length(); i++){
+    	    if(count[str.charAt(i)] > 1){
+    	        temp = true;
+    	    }
+    	}
+    	return temp;
+	}
+	
+    static void checkRepeating(String str) {
+    	for (int i=0; i< str.length(); i++ ){
+    	   int count = 1;    	    
+    	   while( i<str.length()-1 && str.charAt(i) == str.charAt(i+1)){
+    	       count++;
+    	       i++;
+    	   }
+    	   System.out.print(str.charAt(i));
+    	   System.out.print(count);
+
+    	} 
+    }
+}
