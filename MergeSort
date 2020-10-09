@@ -1,0 +1,44 @@
+
+public class MergeSort {
+	
+	static void sortFun(int[] arr, int lb, int ub) {
+		if(lb < ub) {
+			int mid = (lb + ub)/2;
+			sortFun(arr, lb, mid);
+			sortFun(arr, mid+1, ub);
+			mergeFun(arr, lb, mid, ub);
+		}
+	}
+
+	static void mergeFun(int[] arr, int lb, int mid, int ub) {
+		int i = 0, j = 0, k = lb;
+		int n1 = mid - lb + 1;
+		int n2 = ub - mid;
+		int[] LeftArr = new int[n1];
+		int[] RightArr = new int[n2];
+		
+		for (int a = 0; a < n1; ++a) 
+			LeftArr[a] = arr[lb + a]; 
+		for (int b = 0; b < n2; ++b) 
+			RightArr[b] = arr[mid + 1 + b]; 
+
+		while(i < n1 && j < n2) {
+			if(LeftArr[i] <= RightArr[j])
+				arr[k++] = LeftArr[i++];
+			else
+				arr[k++] = RightArr[j++];
+		}
+		while(i < n1)
+			arr[k++] = LeftArr[i++];
+		while( j < n2)
+			arr[k++] = RightArr[j++];
+	}
+	
+	public static void main(String args[]) {
+		int arr[] = {38, 27, 43, 3, 9, 82, 12};
+		sortFun(arr, 0, arr.length - 1);
+		for(int i=0; i<arr.length; i++)
+			System.out.print(arr[i] + " ");
+	}
+
+}
