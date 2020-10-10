@@ -1,0 +1,38 @@
+
+public class QuickSort {
+
+	static void quickSortFun(int[] arr, int lb, int ub) {
+		int pivotIndex = 0;
+		if(lb < ub) {
+			pivotIndex = partitionFun(arr, lb, ub);
+			quickSortFun(arr, lb, pivotIndex-1);
+			quickSortFun(arr, pivotIndex+1, ub);
+		}
+	}
+
+	static int partitionFun(int[] arr, int lb, int ub) {
+		int pivot = arr[lb];
+		int index = lb - 1;
+		while(lb < ub) {
+			if(arr[lb] < pivot) {
+				index++;
+				int temp = arr[index];
+				arr[index] = arr[lb];
+				arr[lb] = temp;
+			}
+			lb++;
+		}
+		int temp = arr[index+1];
+		arr[index+1] = arr[ub];
+		arr[ub] = temp;
+		return index+1;
+	}
+	
+	public static void main(String args[]) {
+		int arr[] = {38, 27, 43, 3, 9, 82, 12};
+		quickSortFun(arr, 0, arr.length - 1);
+		for(int i=0; i<arr.length; i++)
+			System.out.print(arr[i] + " ");
+	}
+
+}
