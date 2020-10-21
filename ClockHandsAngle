@@ -1,0 +1,18 @@
+
+class Solution {
+    static int getAngle(int h , int m) {
+    
+        int hour_hand = (int) ((h%12) * 30 + (m%60) * 0.5);
+        int min_hand = (int) (6 * (m%60));
+        
+        int angle = Math.abs(hour_hand - min_hand);
+        
+        return Math.min(angle, 360-angle);
+        
+    }
+    
+    public static void main(Strings args[]){
+      getAngle(9, 30);  
+    }
+    
+};
